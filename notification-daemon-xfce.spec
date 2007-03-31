@@ -11,13 +11,13 @@ Source0:	http://goodies.xfce.org/releases/%{name}/%{name}-0.3.6.tar.bz2
 # Source0-md5:	bd696b1198904c452c3dec9fcbcea1f7
 Patch0:		%{name}-dbus.patch
 URL:		http://goodies.xfce.org/projects/applications/notification-daemon-xfce
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.71
 BuildRequires:	gtk+2-devel >= 2:2.10.0
 BuildRequires:	libsexy-devel >= 0.1.8
 BuildRequires:	libxfcegui4-devel
 BuildRequires:	libxfce4util-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
 Requires:	dbus >= 0.91
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root-%(id -u -n)
 
@@ -31,11 +31,11 @@ This is a reimplementation of the oryginal GNOME daemon for xfce4.
 Demon wyświetlający pasywne wyskakujące (pop-up) powiadomienia zgodnie
 ze specyfikacją Desktop Notifications.
 
-To jest reimplementacja oryginalneg demona dla GNOME dla xfce4.
+To jest reimplementacja oryginalnego demona dla GNOME dla xfce4.
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p0
 
 %build
 %{__aclocal}
