@@ -1,15 +1,13 @@
-# TODO:
-# - cleanup and rel1
+
 Summary:	Notification Daemon for xfce4
 Summary(pl.UTF-8):	Demon powiadomień dla xfce4
 Name:		notification-daemon-xfce
-Version:	0.3.6
-Release:	0.1
+Version:	0.3.7
+Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	http://goodies.xfce.org/releases/%{name}/%{name}-0.3.6.tar.bz2
-# Source0-md5:	bd696b1198904c452c3dec9fcbcea1f7
-Patch0:		%{name}-dbus.patch
+Source0:	http://goodies.xfce.org/releases/%{name}/%{name}-%{version}.tar.bz2
+# Source0-md5:	ef4a4977875d97a5237b316d5d592176
 URL:		http://goodies.xfce.org/projects/applications/notification-daemon-xfce
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -35,13 +33,14 @@ To jest reimplementacja oryginalnego demona dla GNOME dla xfce4.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
+%{__intltoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure 
+%configure \
+	--enable-gradient-look
 %{__make}
 
 %install
@@ -68,3 +67,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/notification-settings.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_iconsdir}/hicolor/*/apps/notification-settings.png
+%{_libdir}/xfce4/mcs-plugins/notification_settings.so
