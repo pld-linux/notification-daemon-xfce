@@ -1,4 +1,3 @@
-
 Summary:	Notification Daemon for xfce4
 Summary(pl.UTF-8):	Demon powiadomień dla xfce4
 Name:		notification-daemon-xfce
@@ -6,16 +5,20 @@ Version:	0.3.7
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	http://goodies.xfce.org/releases/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://goodies.xfce.org/releases/notification-daemon-xfce/%{name}-%{version}.tar.bz2
 # Source0-md5:	ef4a4977875d97a5237b316d5d592176
 URL:		http://goodies.xfce.org/projects/applications/notification-daemon-xfce
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.71
 BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	intltool
+BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	libsexy-devel >= 0.1.8
-BuildRequires:	libxfcegui4-devel
-BuildRequires:	libxfce4util-devel
+BuildRequires:	libxfcegui4-devel >= 4.3.90
+BuildRequires:	libxfce4util-devel >= 4.3.90
+BuildRequires:	pkgconfig >= 1:0.9.0
+BuildRequires:	xfce-mcs-manager-devel >= 4.2.2
 Requires:	dbus >= 0.91
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root-%(id -u -n)
 
@@ -64,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/notification-daemon-xfce-1.0/engines
 %attr(755,root,root) %{_libdir}/notification-daemon-xfce-1.0/engines/*.so
 %attr(755,root,root) %{_libdir}/notification-daemon-xfce
-%{_desktopdir}/notification-settings.desktop
+%attr(755,root,root) %{_libdir}/xfce4/mcs-plugins/notification_settings.so
 %{_datadir}/dbus-1/services/*.service
+%{_desktopdir}/notification-settings.desktop
 %{_iconsdir}/hicolor/*/apps/notification-settings.png
-%{_libdir}/xfce4/mcs-plugins/notification_settings.so
