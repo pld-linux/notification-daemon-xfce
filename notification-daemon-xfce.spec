@@ -2,7 +2,7 @@ Summary:	Notification Daemon for xfce4
 Summary(pl.UTF-8):	Demon powiadomień dla xfce4
 Name:		notification-daemon-xfce
 Version:	0.3.7
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/System
 Source0:	http://goodies.xfce.org/releases/notification-daemon-xfce/%{name}-%{version}.tar.bz2
@@ -15,12 +15,13 @@ BuildRequires:	gtk+2-devel >= 2:2.10.0
 BuildRequires:	intltool
 BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	libsexy-devel >= 0.1.8
-BuildRequires:	libxfcegui4-devel >= 4.3.90
 BuildRequires:	libxfce4util-devel >= 4.3.90
+BuildRequires:	libxfcegui4-devel >= 4.3.90
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	xfce-mcs-manager-devel >= 4.2.2
 Requires:	dbus >= 0.91
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root-%(id -u -n)
+Provides:	dbus(org.freedesktop.Notifications)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 A daemon that displays passive pop-up notifications as per the Desktop
